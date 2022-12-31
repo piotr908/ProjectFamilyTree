@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand">Genaology Tree</a>
+      </div>
+      <ul class="nav navbar-nav">
+        <li><a href = "{{ url_for('home') }}">Home</a></li>
+        <li><a href = "{{ url_for('addPerson') }}">Add person</a></li>
+        <li class="active"><a href="{{ url_for('findConnection') }}">Find connection</a></li>
+      </ul>
+    </div>
+  </nav>
+<h1> Find Relation </h1>
+
+<form action = "{{ url_for('findConnection') }}" method = "POST">
+
+  <label for="partner">Choose First Person:</label>
+  <select id="partner" name ="person1">
+    {% for node in nodes %}
+    <option value= "{{node[0]}}" SELECTED>{{node[1]}}</option>"
+    {% endfor %}
+    <option value="" selected>----------</option>
+  </select><br>
+
+  <label for="partner">Choose Second Person:</label>
+  <select id="partner" name ="person2">
+    {% for node in nodes %}
+    <option value= "{{node[0]}}" SELECTED>{{node[1]}}</option>"
+    {% endfor %}
+    <option value="" selected>----------</option>
+  </select><br>
+  <button type = "submit">Find connection</button>
+</form>
+
+
+<table id="people" >
+  <tr>
+    <th>ID</th><th>Name</th><th>Mother</th><th>Father</th><th>Partner</th>
+  </tr>
+  {% for result in results %}
+  <tr>
+    <th>{{result[0][0]}}</th><th>{{result[0][1]}}</th><th>{{result[0][2]}}</th><th>{{result[0][3]}}</th><th>{{result[0][4]}}</th>
+  </tr>
+  {% endfor %}
+</table>
+{% endblock %}

@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block content %}
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand">Genaology Tree</a>
+      </div>
+      <ul class="nav navbar-nav">
+        <li><a href="{{ url_for('home') }}">Home</a></li>
+        <li class="active"><a href= "{{ url_for('addPerson') }}">Add person</a></li>
+        <li><a href="{{ url_for('findConnection') }}">Find connection</a></li>
+      </ul>
+    </div>
+  </nav>
+
+<div class="content">
+
+    <form action = "{{ url_for('addPerson') }}" method = "POST">
+        <label for="name">Person name:</label><br>
+        <input type="text" id="name" name="name"><br>
+        <label for="sex">Choose a sex:</label>
+        <select id="sex" name="sex">
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
+        </select><br>
+        <label for="father">Choose Father:</label>
+        <select id="father" name="father">
+          {% for male in males %}
+          <option value= "{{male[0]}}" SELECTED>{{male[1]}}</option>"
+          {% endfor %}
+          <option value="" selected>----------</option>
+        </select><br>
+        <label for="mother">Choose Mother:</label>
+        <select id="mother" name="mother">
+          {% for female in females %}
+          <option value= "{{female[0]}}" SELECTED>{{female[1]}}</option>"
+          {% endfor %}
+          <option value="" selected>----------</option>
+        </select><br>
+        <label for="partner">Choose Partner:</label>
+        <select id="partner" name ="partner">
+          {% for node in nodes %}
+          <option value= "{{node[0]}}" SELECTED>{{node[1]}}</option>"
+          {% endfor %}
+          <option value="" selected>----------</option>
+        </select><br>
+        <button type = "submit">Add Person</button>
+    </form>
+</div>
+{% endblock %}
