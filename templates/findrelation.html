@@ -4,18 +4,18 @@
 <nav class="navbar navbar-default">
     <div class="container-fluid">
       <div class="navbar-header">
-        <a class="navbar-brand">Genaology Tree</a>
+        <a class="navbar-brand">Family Tree</a>
       </div>
       <ul class="nav navbar-nav">
         <li><a href = "{{ url_for('home') }}">Home</a></li>
-        <li><a href = "{{ url_for('addPerson') }}">Add person</a></li>
-        <li class="active"><a href="{{ url_for('findConnection') }}">Find connection</a></li>
+        <li><a href = "{{ url_for('addPerson') }}">Add Person</a></li>
+        <li class="active"><a href="{{ url_for('findRelation') }}">Find Relation</a></li>
       </ul>
     </div>
   </nav>
 <h1> Find Relation </h1>
 
-<form action = "{{ url_for('findConnection') }}" method = "POST">
+<form action = "{{ url_for('findRelation') }}" method = "POST">
 
   <label for="partner">Choose First Person:</label>
   <select id="partner" name ="person1">
