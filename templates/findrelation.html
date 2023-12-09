@@ -9,13 +9,13 @@
       <ul class="nav navbar-nav">
         <li><a href = "{{ url_for('home') }}">Home</a></li>
         <li><a href = "{{ url_for('add_person') }}">Add Person</a></li>
-        <li class="active"><a href="{{ url_for('findRelation') }}">Find Relation</a></li>
+        <li class="active"><a href="{{ url_for('find_relation') }}">Find Relation</a></li>
       </ul>
     </div>
   </nav>
 <h1> Find Relation </h1>
 
-<form action = "{{ url_for('findRelation') }}" method = "POST">
+<form action = "{{ url_for('find_relation') }}" method = "POST">
 
   <label for="partner">Choose First Person:</label>
   <select id="partner" name ="person1">
